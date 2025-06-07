@@ -175,7 +175,76 @@
                 </Menu>
             </Grid>
             <controls:FindReplace Grid.Row="1" x:Name="FindReplacePanel" Margin="0,0,0,0" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
-            <TextBox Grid.Row="2" Name="TextBox1" AllowDrop="True" AcceptsReturn="True" TextWrapping="NoWrap" BorderThickness="0" SpellCheck.IsEnabled="False" Style="{StaticResource Win11TextBox}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="TextBox1_TextChanged" GotMouseCapture="TextBox1_GotMouseCapture" KeyUp="TextBox1_KeyUp" />
+            <TextBox Grid.Row="2" Name="TextBox1" AllowDrop="True" AcceptsReturn="True" TextWrapping="NoWrap" BorderThickness="0" SpellCheck.IsEnabled="False" Style="{StaticResource Win11TextBox}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="TextBox1_TextChanged" GotMouseCapture="TextBox1_GotMouseCapture" KeyUp="TextBox1_KeyUp">
+                <TextBox.ContextMenu>
+                    <ContextMenu FontFamily="Segoe UI" FontSize="16">
+                        <MenuItem Command="ApplicationCommands.Undo">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE7A7;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="ApplicationCommands.Copy">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xe8c8;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="ApplicationCommands.Cut">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xe8c6;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="ApplicationCommands.Paste">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE77F;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Command="ApplicationCommands.Delete">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE74D;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Command="ApplicationCommands.SelectAll">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xe8b3;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Define with Bing">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xf6fa;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Rewrite">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xee56;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Custom rewrite">
+                            <MenuItem.Icon>
+                                <Image Source="/empty.png" Width="20" />
+                            </MenuItem.Icon>
+                            <MenuItem Header="Make shorter" />
+                                <MenuItem Header="Make longer" />
+                                <MenuItem Header="Change tone" />
+                                <MenuItem Header="Change format" />
+                            </MenuItem>
+                        <MenuItem Header="Summarize">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xf4a5;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Spelling">
+                            <MenuItem.Icon>
+                                <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xf87b;"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBox.ContextMenu>
+            </TextBox>
             <StatusBar Grid.Row="3" Name="StatusBar1" Padding="4" Background="Transparent">
                 <StatusBarItem>
                     <ScrollViewer Focusable="False" IsTabStop="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="AutoSaveMenu_Click">
