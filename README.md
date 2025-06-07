@@ -7,5 +7,6 @@ Initial version includes
 - Several months of code refactoring but might still be rough around the edges. There are new clases for app settings, app state, and document (which includes file operations now).
 - Find/replace has been reimplemented as a UserControl. I am looking at reimplementing Setting similarly.
 - A new "document needs to be saved" indicator in the menu bar uses data-binding to stay up-to-date.
+- I've started building out the text box context menu with more options.
 
 More soon.
