@@ -34,6 +34,7 @@ namespace DotNetPad32
             Save_AutoSaveSettings(aps);
             Save_ZoomSettings(aps);
         }
+
         public void Load_ThemeSettings(MainWindow mw)
         {
 #pragma warning disable WPF0001

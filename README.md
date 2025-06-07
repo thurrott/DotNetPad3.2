@@ -8,5 +8,6 @@ Initial version includes
 - Find/replace has been reimplemented as a UserControl. I am looking at reimplementing Setting similarly.
 - A new "document needs to be saved" indicator in the menu bar uses data-binding to stay up-to-date.
 - I've started building out the text box context menu with more options.
+- I'm experimenting with different icon designs
 
 More soon.

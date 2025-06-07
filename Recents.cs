@@ -34,22 +34,15 @@ namespace DotNetPad32
                     newMenuItem.Click += (sender, e) => 
                     {
                         // Handle click event for recent files
-                        System.Windows.MessageBox.Show($"Opening {newMenuItem.Header}");
-                        // Here you would add code to open the file
+                        
                     };
                 }
             }
-
-            // Testing testing
-            MenuItem newMenu = new();
-            newMenu.Header = Path.GetFileNameWithoutExtension("C:\\Users\\paul\\SynologyDrive\\Docs\\Current\\Work\\2025-05\\Install core apps v9.txt");
-            MyMenu.Items.Add(newMenu);
         }
 
         public Boolean ResetRecents(MenuItem m)
         {
-            //MyRecents.Clear();
-            //MyRecents.Add("Empty");
+            
             return true;
         }
     }
