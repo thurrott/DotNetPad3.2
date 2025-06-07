@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="DotNetPad32.FindReplace"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:DotNetPad32" mc:Ignorable="d" Name="FindReplacePanel">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" BorderThickness="0,1,0,1" BorderBrush="{DynamicResource ControlAltFillColorQuarternaryBrush}">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" MaxWidth="450" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="1*" MaxWidth="450" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Name="FindTextBox" Height="32" Margin="0,7,7,7" FontSize="12" />
+                    <Button Grid.Column="1" Name="FindNextButton" Height="32" IsDefault="True" Click="FindNextButton_Click" FontFamily="Segoe Fluent Icons" FontSize="12" Content="&#xE74B;" Margin="0,7,7,7" BorderThickness="0" Background="Transparent" />
+                    <Button Grid.Column="2" Name="FindPreviousButton" Height="32" Click="FindPreviousButton_Click" FontFamily="Segoe Fluent Icons" FontSize="12" Content="&#xE74A;" Margin="0,7,7,7" BorderThickness="0" Background="Transparent"/>
+                    <TextBox Grid.Column="3" Name="ReplaceTextBox" Height="32" Margin="0,7,7,7" FontSize="12" Visibility="Collapsed" />
+                    <Button Grid.Column="4" Name="ReplaceButton" Width="100" Height="32" Content="Replace" Margin="0,7,7,7" FontSize="12" Visibility="Collapsed" Click="ReplaceButton_Click" />
+                    <Button Grid.Column="6" Name="ReplaceAllButton" Width="100" Height="32" Content="Replace all" Margin="0,7,7,7" FontSize="12" Visibility="Collapsed" Click="ReplaceAllButton_Click" />
+                </Grid>
+                <Button Grid.Column="2" Name="CloseFindReplaceButton" Height="32" IsCancel="True" FontFamily="Segoe Fluent Icons" FontSize="10" Content="&#xE8BB;" Margin="0,7,0,7" BorderThickness="0" Background="Transparent" Click="CloseFindReplaceButton_Click" />
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

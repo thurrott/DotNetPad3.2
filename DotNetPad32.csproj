@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<NoWarn>$(NoWarn);WPF0001</NoWarn>
+    <ApplicationIcon>t-pride-icon.ico</ApplicationIcon>
+    <PackageIcon>t-pride-icon.png</PackageIcon>
+    <FileVersion>3.2</FileVersion>
+    <AssemblyVersion>3.2</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="empty.png" />
+    <None Remove="t-pride-icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="t-pride-icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="empty.png" />
+    <Resource Include="t-pride-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="t-pride-icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
