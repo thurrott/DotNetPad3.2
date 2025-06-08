@@ -1,5 +1,7 @@
 # DotNetPad32
 
+![dnp32-beta](https://github.com/user-attachments/assets/3684bd4d-031d-404d-860c-f7a6f5d17e22)
+
 .NETpad 3.2 for Windows 11 is a work-in-progress update to [.NETpad 3](https://github.com/thurrott/DotNetPad3), a Windows Presentation Foundation (WPF) version of .NETpad that adds support for Windows 11 theming.
 
 Initial version includes 
