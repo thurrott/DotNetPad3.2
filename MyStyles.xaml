@@ -7,13 +7,26 @@
         <Setter Property="Opacity" Value="1" />
         <Setter Property="ContextMenu" Value="{StaticResource Win11ContextMenu}" />
     </Style>
+    <Style x:Key="Win11Menu" TargetType="Menu">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style x:Key="Win11ButtonAccent" TargetType="Button" BasedOn="{DynamicResource AccentButtonStyle}">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+    <Style x:Key="Win11TextBlock15" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
     <Style x:Key="Win11Text" TargetType="Control">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontSize" Value="15" />
     </Style>
     <Style x:Key="Win11Text2" TargetType="Control">
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
-        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontSize" Value="13" />
     </Style>
     <Style x:Key="Win11ContextMenu" TargetType="ContextMenu">
         <Setter Property="FontSize" Value="12" />

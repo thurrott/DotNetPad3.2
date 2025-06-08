@@ -83,7 +83,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Menu Grid.Column="0" FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" BorderThickness="0" Padding="0,-2,0,0" Margin="0,0,0,0">
+                <Menu Grid.Column="0" FlowDirection="LeftToRight" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Left" BorderThickness="0" Padding="0,-2,0,0" Margin="0,0,0,0" Style="{DynamicResource Win11Menu}">
                     <MenuItem Header="_File" HorizontalAlignment="Left" WindowChrome.IsHitTestVisibleInChrome="False">
                         <MenuItem Name="NewMenu" Command="New" Header="_New">
                             <MenuItem.Icon>
@@ -165,11 +165,11 @@
                     </MenuItem>
                 </Menu>
                 <Separator Grid.Column="1" Visibility="Visible" BorderThickness="0"/>
-                <TextBlock Grid.Column="2" Name="NeedsToBeSavedTextBlock" Visibility="{Binding d.TextHasChanged, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe Fluent Icons" Foreground="Red" Text="&#xE915;" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,3,0,0" />
+                <TextBlock Grid.Column="2" Name="NeedsToBeSavedTextBlock" Visibility="{Binding d.TextHasChanged, Converter={StaticResource BooleanToVisibilityConverter}}" FontFamily="Segoe Fluent Icons" Foreground="Red" FontSize="15" Text="&#xE915;" Focusable="False" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" />
                 <Menu Grid.Column="3" BorderThickness="0">
                     <MenuItem Name="SettingsButton" WindowChrome.IsHitTestVisibleInChrome="False" HorizontalAlignment="Right" FlowDirection="RightToLeft" ToolTip="Settings" ToolTipService.InitialShowDelay="500" Click="SettingsButton_Click">
                         <MenuItem.Header>
-                            <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE713;" />
+                            <TextBlock FontFamily="Segoe Fluent Icons" FontSize="15" Text="&#xE713;" />
                         </MenuItem.Header>
                     </MenuItem>
                 </Menu>
@@ -177,7 +177,8 @@
             <controls:FindReplace Grid.Row="1" x:Name="FindReplacePanel" Margin="0,0,0,0" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
             <TextBox Grid.Row="2" Name="TextBox1" AllowDrop="True" AcceptsReturn="True" TextWrapping="NoWrap" BorderThickness="0" SpellCheck.IsEnabled="False" Style="{StaticResource Win11TextBox}" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextChanged="TextBox1_TextChanged" GotMouseCapture="TextBox1_GotMouseCapture" KeyUp="TextBox1_KeyUp">
                 <TextBox.ContextMenu>
-                    <ContextMenu FontFamily="Segoe UI" FontSize="16">
+                    <!-- Add spellcheck: https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/how-to-use-spell-checking-with-a-context-menu -->
+                    <ContextMenu FontFamily="Segoe UI" FontSize="15">
                         <MenuItem Command="ApplicationCommands.Undo">
                             <MenuItem.Icon>
                                 <TextBlock FontFamily="Segoe Fluent Icons" Text="&#xE7A7;"/>
@@ -245,21 +246,49 @@
                     </ContextMenu>
                 </TextBox.ContextMenu>
             </TextBox>
-            <StatusBar Grid.Row="3" Name="StatusBar1" Padding="4" Background="Transparent">
+            <StatusBar Grid.Row="3" Name="StatusBar1" Padding="0,5,0,5" Background="Transparent" Height="Auto">
                 <StatusBarItem>
-                    <ScrollViewer Focusable="False" IsTabStop="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="AutoSaveMenu_Click">
-                        <TextBlock Width="100" Name="AutoSaveText" Text="Auto save: Off" Margin="5,0,10,0" ToolTip="Double-click to toggle Auto save" ToolTipService.InitialShowDelay="500" />
+                    <ScrollViewer Focusable="False" IsTabStop="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="AutoSaveMenu_Click" ToolTip="Double-click to toggle Auto save" ToolTipService.InitialShowDelay="500">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" FontFamily="Segoe Fluent Icons" FontSize="15" Text="&#xe78c;" Margin="10,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" Name="AutoSaveText" Text="Auto save: Off" Margin="5,0,35,0" VerticalAlignment="Center" Style="{StaticResource Win11TextBlock15}" />
+                        </Grid>
                     </ScrollViewer>
                 </StatusBarItem>
                 <StatusBarItem>
-                    <TextBlock Width="100" Name="PositionText" Text="Ln 1, Col 1" Margin="5,0,10,0"/>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" FontFamily="Segoe Fluent Icons" FontSize="15" Text="&#xea37;" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Name="PositionText" Text="Ln 1, Col 1" Margin="5,0,35,0" HorizontalAlignment="Left" VerticalAlignment="Center"  Style="{StaticResource Win11TextBlock15}" />
+                    </Grid>
                 </StatusBarItem>
                 <StatusBarItem>
-                    <TextBlock Width="75" Name="ZoomText" Text="100%" Margin="5,0,10,0" ToolTip="Ctrl + Plus to Zoom in, Ctrl + Minus to Zoom out, Ctrl + 0 to reset" ToolTipService.InitialShowDelay="500" />
+                    <Grid ToolTip="Ctrl + Plus to Zoom in, Ctrl + Minus to Zoom out, Ctrl + 0 to reset" ToolTipService.InitialShowDelay="500">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Grid.Row="0" FontFamily="Segoe Fluent Icons" FontSize="15" Text="&#xe8a3;" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1" Grid.Row="0" Name="ZoomText" Text="100%" Margin="5,0,35,0" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource Win11TextBlock15}" />
+                    </Grid>
                 </StatusBarItem>
                 <StatusBarItem>
                     <ScrollViewer Focusable="False" IsTabStop="False" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="StatusBarCount_MouseDoubleClick">
-                        <TextBlock Width="100" Name="WordCountText" Text="0 characters" Margin="5,0,10,0" ToolTip="Double-click to toggle word/character count" ToolTipService.InitialShowDelay="500" />
+                        <Grid ToolTip="Double-click to toggle word/character count" ToolTipService.InitialShowDelay="500">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" FontFamily="Segoe Fluent Icons" FontSize="15" Text="&#xe736;" Margin="0,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <TextBlock Grid.Column="1" Grid.Row="0" Width="100" Name="WordCountText" Text="0 characters" Margin="5,0,35,0"  Style="{StaticResource Win11TextBlock15}" />
+                        </Grid>
                     </ScrollViewer>
                 </StatusBarItem>
                 <StatusBarItem>
@@ -317,7 +346,7 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE790;" Margin="10,10,10,10" />
+                                <Label Grid.Column="0" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE790;" Margin="10,10,10,10" />
                                 <Grid Grid.Column="1" Margin="10,0,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -344,7 +373,7 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE8D2;" Margin="10,10,10,10" />
+                                <Label Grid.Column="0" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE8D2;" Margin="10,10,10,10" />
                                 <Grid Grid.Column="1" Margin="10,0,0,0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="*" />
@@ -397,7 +426,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE7BC;" Margin="20,20,10,10" VerticalAlignment="Top" />
+                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE7BC;" Margin="20,20,10,10" VerticalAlignment="Top" />
                                 <Grid Grid.Column="1" Margin="10,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />
@@ -420,7 +449,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE8E5;" Margin="20,20,10,10" VerticalAlignment="Top" />
+                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE8E5;" Margin="20,20,10,10" VerticalAlignment="Top" />
                                 <Grid Grid.Column="1" Margin="10,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />
@@ -444,7 +473,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE78C;" Margin="20,20,10,10" VerticalAlignment="Top" />
+                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE78C;" Margin="20,20,10,10" VerticalAlignment="Top" />
                                 <Grid Grid.Column="1" Margin="10,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />
@@ -466,7 +495,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xF87B;" Margin="20,20,10,10" VerticalAlignment="Top" />
+                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xF87B;" Margin="20,20,10,10" VerticalAlignment="Top" />
                                 <Label Grid.Column="1" Margin="10,10,0,0" Padding="0" Content="Spell check" Style="{StaticResource Win11Text}" VerticalAlignment="Center" HorizontalAlignment="Left" />
                                 <ToggleButton Grid.Column="2" Name="SpellCheckToggleButton" Content="Off" Margin="10,17,10,0" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Top" Click="SpellCheckToggleButton_Click" />
                             </Grid>
@@ -480,7 +509,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="16" Content="&#xE70F;" Margin="20,20,10,10" VerticalAlignment="Top" />
+                                <Label Grid.Column="0" HorizontalAlignment="Left" Width="32" Style="{StaticResource Win11Text}" FontFamily="Segoe Fluent Icons" FontSize="15" Content="&#xE70F;" Margin="20,20,10,10" VerticalAlignment="Top" />
                                 <Grid Grid.Column="1" Margin="10,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1*" />

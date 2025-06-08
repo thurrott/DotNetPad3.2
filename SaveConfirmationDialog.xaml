@@ -22,7 +22,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Height="Auto" Text=".NETpad" Style="{DynamicResource SubtitleTextBlockStyle}" Margin="0,25,0,10" />
-                <TextBlock Grid.Row="1" Name="ConfirmTextBlock" Text="Do you want to save the changes to Untitled.txt?"  Style="{DynamicResource BodyTextBlockStyle}" Margin="0,0,10,0" />
+                <TextBlock Grid.Row="1" Name="ConfirmTextBlock" Text="Do you want to save the changes to Untitled.txt?"  Style="{DynamicResource Win11TextBlock15}" Margin="0,0,10,0" />
             </Grid>
         </Grid>
         <Border Grid.Row="1" Name="BottomBorder" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,25,0,0" BorderBrush="{DynamicResource DividerStrokeColorDefaultBrush}" Background="{DynamicResource LayerOnMicaBaseAltFillColorSecondaryBrush}" >
@@ -38,9 +38,9 @@
                         <ColumnDefinition MaxWidth="300" Width="*" />
                         <ColumnDefinition MaxWidth="300" Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="Save" MinWidth="90" Height="32" MinHeight="32" Focusable="True" HorizontalAlignment="Stretch" Margin="0,20,10,20" Name="ConfirmationSaveButton" Click="ConfirmationSaveButton_Click" TabIndex="0" IsDefault="True" Style="{DynamicResource AccentButtonStyle}" />
-                    <Button Grid.Column="1" Content="Don't save" MinWidth="90" Height="32" MinHeight="32" HorizontalAlignment="Stretch" TabIndex="1" Click="ConfirmationDontSaveButton_Click" Margin="0,20,0,20" Name="ConfirmationDontSaveButton" Focusable="True" />
-                    <Button Grid.Column="2" Content="Cancel" MinWidth="90" Height="32" MinHeight="32" HorizontalAlignment="Stretch" IsCancel="true" TabIndex="2" Margin="10,20,0,20" Name="ConfirmationCancelButton" Focusable="True" Click="ConfirmationCancelButton_Click" />
+                    <Button Grid.Column="0" Content="Save" MinWidth="90" Height="32" MinHeight="32" Focusable="True" HorizontalAlignment="Stretch" Margin="0,20,10,20" Name="ConfirmationSaveButton" Click="ConfirmationSaveButton_Click" TabIndex="0" IsDefault="True" Style="{DynamicResource AccentButtonStyle}" FontSize="15" />
+                    <Button Grid.Column="1" Content="Don't save" MinWidth="90" Height="32" MinHeight="32" HorizontalAlignment="Stretch" TabIndex="1" Click="ConfirmationDontSaveButton_Click" Margin="0,20,0,20" Name="ConfirmationDontSaveButton" Focusable="True" FontSize="15" />
+                    <Button Grid.Column="2" Content="Cancel" MinWidth="90" Height="32" MinHeight="32" HorizontalAlignment="Stretch" IsCancel="true" TabIndex="2" Margin="10,20,0,20" Name="ConfirmationCancelButton" Focusable="True" Click="ConfirmationCancelButton_Click" FontSize="15" />
                 </Grid>
             </Grid>
         </Border>

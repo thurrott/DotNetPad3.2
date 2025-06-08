@@ -10,8 +10,7 @@ namespace DotNetPad32
         {
             InitializeComponent();
 
-            ConfirmTextBlock.Text = "Do you want to save the changes to " +
-                                        System.IO.Path.GetFileNameWithoutExtension(document) + "?";
+            ConfirmTextBlock.Text = "Do you want to save the changes to " + System.IO.Path.GetFileNameWithoutExtension(document) + "?";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

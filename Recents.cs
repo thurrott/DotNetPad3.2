@@ -9,10 +9,10 @@ namespace DotNetPad32
 
         public Recents(MenuItem m)
         {
+            MenuItem MyMenu = m; 
             Separator s = new Separator();
-            s = (Separator)m.Items[0];
-            MenuItem MyMenu = m;
-
+            s = (Separator)MyMenu.Items[0];
+            
             // if (MyRecents[0] == "Empty")
             if (MyRecents.Count == 0)
             {

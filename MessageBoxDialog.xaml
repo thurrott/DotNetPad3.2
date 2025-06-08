@@ -22,7 +22,7 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <TextBlock Name="TitleTextBlock" Grid.Row="0" Height="Auto" Text=".NETpad" Style="{DynamicResource SubtitleTextBlockStyle}" Margin="0,25,0,10" />
-                <TextBlock Name="MessageTextBlock" Grid.Row="1" Text="Message text" Style="{DynamicResource BodyTextBlockStyle}" Margin="0,0,10,0" />
+                <TextBlock Name="MessageTextBlock" Grid.Row="1" Text="Message text" Style="{DynamicResource Win11TextBlock15}" Margin="0,0,10,0" />
             </Grid>
         </Grid>
         <Border Grid.Row="1" Name="BottomBorder" BorderThickness="0,1,0,0" HorizontalAlignment="Stretch" 
@@ -37,7 +37,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition MinWidth="300" MaxWidth="400" Width="1*" />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="OK" Width="200" Height="32" MinHeight="32" Focusable="True" HorizontalAlignment="Right" Margin="0,20,10,20" Name="MessageBoxOKButton" Click="MessageBoxButton_Click" TabIndex="0" IsDefault="True" IsCancel="True" Style="{DynamicResource AccentButtonStyle}" />
+                    <Button Grid.Column="0" Content="OK" Width="200" Height="32" MinHeight="32" Focusable="True" HorizontalAlignment="Right" Margin="0,20,10,20" Name="MessageBoxOKButton" Click="MessageBoxButton_Click" TabIndex="0" IsDefault="True" IsCancel="True" Style="{DynamicResource AccentButtonStyle}" FontSize="15"/>
                 </Grid>
             </Grid>
         </Border>
