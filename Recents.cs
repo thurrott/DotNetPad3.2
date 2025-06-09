@@ -1,49 +1,89 @@
 ﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace DotNetPad32
 {
     internal class Recents
     {
-        public System.Collections.Specialized.StringCollection MyRecents { get; set; } = [];
+        public System.Collections.Specialized.StringCollection MyRecentsList { get; set; } = [];
 
-        public Recents(MenuItem m)
+        public Recents()
         {
-            MenuItem MyMenu = m; 
-            Separator s = new Separator();
-            s = (Separator)MyMenu.Items[0];
-            
-            // if (MyRecents[0] == "Empty")
-            if (MyRecents.Count == 0)
+            MyRecentsList = Settings.Default.MyRecents;
+        }
+
+        public bool LoadRecents(MenuItem m)
+        {
+            MenuItem MyMenu = m;
+            MyMenu.Items.Clear();
+
+            MessageBox.Show(MyRecentsList.Count.ToString());
+
+            if (MyRecentsList == null || MyRecentsList.Count == 0)
             {
-                // The recent documents collection is empty, so edit the submenu
-                s.Visibility = System.Windows.Visibility.Collapsed;
-                MyMenu = (MenuItem)m.Items[1];
-                MyMenu.Header = "No recent files";
-                MyMenu.IsEnabled = false;
+                // MyRecentsList is empty, use default Recents submenu
+                MenuItem NoItems = new MenuItem() { Header = "No recent files", IsEnabled = false };
+                MyMenu.Items.Add(NoItems);
             }
             else
             {
-                // Add recents to the menu
-                s.Visibility = System.Windows.Visibility.Visible;
-                for (int x = 1; x < MyRecents.Count - 1; x++)
+                // Load the recents list and populate the submenu
+                for (int x = 0; x < MyRecentsList.Count; x++)
                 {
-                    // Populate recents submenu
-                    MenuItem newMenuItem = new();
-                    newMenuItem.Header = Path.GetFileNameWithoutExtension(Settings.Default.MyRecents[x]);
-                    newMenuItem.Click += (sender, e) => 
-                    {
-                        // Handle click event for recent files
-                        
-                    };
+                    MenuItem newItem = new();
+                    newItem.Header = (Path.GetFileNameWithoutExtension(MyRecentsList[x]));
+                    newItem.Tag = MyRecentsList[x];
+                    newItem.Click += new RoutedEventHandler(RecentMenuItem_Click);
+                    MyMenu.Items.Add(newItem);
                 }
+                MyMenu.Items.Add(new Separator());
+
+                MenuItem ClearListMenuItem = new MenuItem();
+                ClearListMenuItem.Header = "Clear list";
+                ClearListMenuItem.Click += new RoutedEventHandler(ClearListMenuItem_Click);
+                MyMenu.Items.Add(ClearListMenuItem);
             }
+            return true;
         }
 
-        public Boolean ResetRecents(MenuItem m)
+        public void AddRecent(string f, MenuItem m)
         {
+            if (MyRecentsList.Contains(f))
+            {
+                MyRecentsList.Remove(f);
+            }
+            MyRecentsList.Insert(0, f);
+            // Limit to 10 recent files
+            if (MyRecentsList.Count > 10)
+            {
+                MyRecentsList.RemoveAt(10);
+            }
             
-            return true;
+            Settings.Default.MyRecents = MyRecentsList;
+            Settings.Default.Save();
+        }
+
+        public void RecentMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = (MainWindow)Application.Current.MainWindow;
+            Document d = mw.d;
+            MenuItem? mi = sender as MenuItem;
+            string s = mi.Tag.ToString();
+
+            d.OpenDocument(mw.TextBox1, s);
+        }
+
+        public void ClearListMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = (MainWindow)Application.Current.MainWindow;
+            MenuItem MyMenu = (MenuItem)mw.RecentMenu;
+            MyMenu.Items.Clear();
+            Settings.Default.MyRecents.Clear();
+            LoadRecents(MyMenu);
+
+            Settings.Default.MyRecents = MyRecentsList;
+            Settings.Default.Save();
         }
     }
 }

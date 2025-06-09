@@ -16,6 +16,7 @@ namespace DotNetPad32
         public Document d { get; } = new();
         AppState appState = new();
         AppSettings appSettings = new();
+        Recents recents = new();
 
         // Create a timer for Auto save
         private static System.Timers.Timer AutoSaveTimer = new();
@@ -42,13 +43,18 @@ namespace DotNetPad32
             // appState.FontSizeInSettings = TextBox1.FontSize;
 
             // Build out the Recents sub-menu
-            Recents recents = new(RecentMenu);
+            recents.LoadRecents(RecentMenu);
 
             // Get app information
             AppInfo();
 
             // Select the text box so the user can start typing
             TextBox1.Focus();
+        }
+
+        public void RecentsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("WORKS!");
         }
 
         private void SetUpTimer()
@@ -234,12 +240,15 @@ namespace DotNetPad32
             }
         }
 
-        private void OpenCommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        public void OpenCommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
         {
             if (d.NeedsToBeSaved(TextBox1.Text))
             {
-                d.OpenDocument(TextBox1);
-                Title = Path.GetFileNameWithoutExtension(d.FileName);
+                if (d.OpenDocument(TextBox1, ""))
+                {
+                    Title = Path.GetFileNameWithoutExtension(d.FileName);
+                    recents.AddRecent(d.FileName, RecentMenu);
+                }
             }
         }
 

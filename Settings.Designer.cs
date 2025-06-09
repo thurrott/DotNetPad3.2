@@ -205,9 +205,14 @@ namespace DotNetPad32 {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsd=\"http://www.w3." +
-            "org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\r\n  <s" +
-            "tring>Empty</string>\r\n</ArrayOfString>")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">
+  <string>C:\Users\paul\SynologyDrive\Docs\Current\Work\2025-05\Install core apps v9 2.txt</string>
+  <string>C:\Users\paul\SynologyDrive\Docs\Current\Work\2025-05\My Log.txt</string>
+  <string>C:\Users\paul\SynologyDrive\Docs\Current\Work\2025-05\Install core apps v9.txt</string>
+  <string>C:\Users\paul\SynologyDrive\Docs\Current\Work\2025-05\Speech.txt</string>
+  <string>C:\Users\paul\SynologyDrive\Docs\Current\Work\2025-05\Test document.txt</string>
+</ArrayOfString>")]
         public global::System.Collections.Specialized.StringCollection MyRecents {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["MyRecents"]));

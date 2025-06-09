@@ -117,7 +117,7 @@
                                 <Image Source="/empty.png" Width="20" />
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Name="AutoSaveMenu" Header="Auto sa_ve" IsCheckable="True" IsChecked="False" Click="AutoSaveMenu_Click" />
+                        <MenuItem Name="AutoSaveMenu" Header="Auto sa_ve" IsCheckable="True" IsChecked="False" Click="AutoSaveMenu_Click"/>
                         <Separator />
                         <MenuItem Name="PrintMenu" Command="Print" Header="_Print">
                             <MenuItem.Icon>

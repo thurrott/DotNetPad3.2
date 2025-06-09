@@ -10,6 +10,7 @@
     <Style x:Key="Win11Menu" TargetType="Menu">
         <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="FontSize" Value="15" />
+        <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
         <Setter Property="Background" Value="Transparent" />
     </Style>
     <Style x:Key="Win11ButtonAccent" TargetType="Button" BasedOn="{DynamicResource AccentButtonStyle}">

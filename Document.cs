@@ -48,21 +48,48 @@ namespace DotNetPad32
             mw.Title = System.IO.Path.GetFileNameWithoutExtension(FileName);
         }
 
-        public bool OpenDocument(TextBox tb)
+        public bool OpenDocument(TextBox tb, string FilePath)
         {
             bool success = false;
 
-            OpenFileDialog openFileDialog = new()
+            if (FilePath == "")
             {
-                Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
-            };
+                OpenFileDialog openFileDialog = new()
+                {
+                    Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*"
+                };
 
-            if (openFileDialog.ShowDialog() == true)
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    // Normal File > Open operation
+                    try
+                    {
+                        FileName = System.IO.Path.GetFullPath(openFileDialog.FileName);
+                        Contents = System.IO.File.ReadAllText(openFileDialog.FileName);
+                        tb.Text = Contents;
+                        TextHasChanged = false;
+                        DocumentIsSaved = true;
+
+                        success = true;
+                    }
+                    catch
+                    {
+                        //
+                    }
+                }
+                else
+                {
+                    success = false;
+                }
+            }
+            else
             {
+                // You clicked an item in the Recents menu
                 try
                 {
-                    FileName = System.IO.Path.GetFullPath(openFileDialog.FileName);
-                    Contents = System.IO.File.ReadAllText(openFileDialog.FileName);
+                    FileName = System.IO.Path.GetFullPath(FilePath);
+                    Contents = System.IO.File.ReadAllText(FilePath);
+
                     tb.Text = Contents;
                     TextHasChanged = false;
                     DocumentIsSaved = true;
@@ -73,10 +100,6 @@ namespace DotNetPad32
                 {
                     //
                 }
-            }
-            else
-            {
-                success = false;
             }
 
             return success;
